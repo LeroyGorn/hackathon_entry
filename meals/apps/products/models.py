@@ -26,7 +26,7 @@ class UserProduct(models.Model):
         on_delete=models.CASCADE
     )
 
-    quantity = models.PositiveSmallIntegerField()
+    quantity = models.FloatField()
 
     class Meta:
         unique_together = ('user', 'product', )
