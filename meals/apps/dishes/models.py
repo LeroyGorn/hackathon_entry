@@ -22,7 +22,7 @@ class Dish(models.Model):
         max_length=64
     )
 
-    image = models.ImageField(upload_to='upload/')
+    image = models.URLField(max_length=256)
 
     category = models.CharField(
         max_length=16,
@@ -32,6 +32,10 @@ class Dish(models.Model):
     instructions = models.TextField(
         blank=True, null=True
     )
+
+    class Meta:
+        verbose_name = 'Dish'
+        verbose_name_plural = 'Dishes'
 
     def __str__(self):
         return self.name

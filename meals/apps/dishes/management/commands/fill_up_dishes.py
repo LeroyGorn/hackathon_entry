@@ -12,21 +12,24 @@ class Command(BaseCommand):
     help = 'Get dishes from MealsDB'
 
     def handle(self, *args, **options):
-        # alphabet = 'abcdefghijklmnopqrstuvwxyz'
-        alphabet = 'a'
+        alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
         for letter in alphabet:
             logger.info(f'Request letter {letter}')
             response = requests.get(f'https://www.themealdb.com/api/json/v1/1/search.php?f={letter}')
-            for data in response.json().get('meals', []):
+
+            response = response.json()['meals'] if response.json()['meals'] else []
+            for data in response:
                 name = data['strMeal']
                 category = data['strCategory']
                 image = data['strMealThumb']
+                instructions = data['strInstructions']
 
                 dish, created = Dish.objects.get_or_create(
                     name=name,
                     image=image,
-                    category=category
+                    category=category,
+                    instructions=instructions
                 )
                 if created:
                     logger.info(f'{dish.name} was successfully created')
