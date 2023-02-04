@@ -5,7 +5,9 @@ export const themes = {
       playfair: "'Playfair Display', serif",
     },
     weight: {},
-    size: {},
+    size: {
+      medium: "1rem",
+    },
   },
   spacing: {},
   color: {
