@@ -52,7 +52,9 @@ class DishProduct(models.Model):
         on_delete=models.CASCADE
     )
 
-    quantity = models.FloatField()
+    quantity = models.FloatField(
+        blank=True, null=True
+    )
 
     def __str__(self):
         return f'{self.dish} {self.product}'
