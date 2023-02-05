@@ -10,4 +10,13 @@ class DishAdmin(admin.ModelAdmin):
     list_filter = ['category']
 
 
-admin.site.register(DishProduct)
+@admin.register(DishProduct)
+class DishAdmin(admin.ModelAdmin):
+    search_fields = ['dish__name', 'product__name']
+    list_display = ['dish_name', 'product_name', 'quantity']
+
+    def dish_name(self, obj):
+        return obj.dish.name
+
+    def product_name(self, obj):
+        return obj.product.name

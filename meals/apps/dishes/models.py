@@ -44,12 +44,14 @@ class Dish(models.Model):
 class DishProduct(models.Model):
     dish = models.ForeignKey(
         to='dishes.Dish',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='products'
     )
 
     product = models.ForeignKey(
         to='products.Product',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='dishes'
     )
 
     quantity = models.FloatField(
