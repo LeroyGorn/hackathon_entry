@@ -5,7 +5,7 @@ import { ErrorMessage } from "../constants";
 export class HttpService implements IHttpClient {
   constructor(
     private fetchingService: IHttpClient,
-    private baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+    private baseUrl = process.env.REACT_APP_BASE_URL
   ) {}
 
   private getFullApiUrl(url: string) {
