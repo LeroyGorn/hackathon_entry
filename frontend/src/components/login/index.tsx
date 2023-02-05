@@ -27,7 +27,6 @@ const Login = () => {
       .then((res) => {
         if (res) {
           res && setData(res);
-          navigate("/");
         } else {
           setError("Invalid Email/Password");
         }
@@ -40,9 +39,11 @@ const Login = () => {
     if (data) {
       localStorage.setItem("ACCESS_TOKEN", data.access);
       localStorage.setItem("REFRESH_TOKEN", data.refresh);
+      localStorage.setItem("USERNAME", data.first_name);
       dispatch(get(data));
+      navigate("/");
     }
-  }, [data, dispatch]);
+  }, [data, dispatch, navigate]);
 
   return (
     <AuthModal>

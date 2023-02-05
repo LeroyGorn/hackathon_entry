@@ -1,3 +1,5 @@
+import { IDish } from "./products.type";
+
 export interface ILoginResponse {
   access: string;
   refresh: string;
@@ -14,4 +16,10 @@ export interface ISignUpResponse {
 
 export interface IRefreshResponse {
   refresh: string;
+}
+
+export interface IDishResponse {
+  count: number;
+  next: string;
+  results: IDish[];
 }

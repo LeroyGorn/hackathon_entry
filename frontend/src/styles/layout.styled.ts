@@ -5,6 +5,6 @@ export const LayoutContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 100vh;
   font-size: 1.3rem;
-`
+  min-height: 100vh;
+`;
