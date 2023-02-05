@@ -1,14 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { IProduct } from '../../types/products.type';
 
-export interface ProductState {
-	id: string;
-  name: string;
-	description: string;
-	measurement: string;
-}
-
-const initialState: ProductState[] = [];
+const initialState: IProduct[] = [];
 
 export const productSlice = createSlice({
 	name: 'products',
@@ -38,7 +32,7 @@ export const productSlice = createSlice({
 		// 	return state.filter((el) => el.id !== action.payload);
 		// },
 
-		get: (state, action: PayloadAction<ProductState[]>) => {
+		get: (state, action: PayloadAction<IProduct[]>) => {
 			state = [...action.payload];
 			return state;
 		},
@@ -46,5 +40,5 @@ export const productSlice = createSlice({
 });
 
 export const { get } = productSlice.actions;
-
+export const showProducts = (state: IProduct[]) => state;
 export default productSlice.reducer;
