@@ -24,12 +24,14 @@ class Product(models.Model):
 class UserProduct(models.Model):
     user = models.ForeignKey(
         to='auth_user.CustomUser',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='products'
     )
 
     product = models.ForeignKey(
         to='products.Product',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='user_products'
     )
 
     quantity = models.FloatField()

@@ -10,4 +10,14 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ['measurement']
 
 
-admin.site.register(UserProduct)
+@admin.register(UserProduct)
+class ProductAdmin(admin.ModelAdmin):
+    search_fields = ['product__name', 'user__email']
+    list_display = ['product_name', 'user_email', 'quantity']
+    raw_id_fields = ['product']
+
+    def product_name(self, obj):
+        return obj.product.name
+
+    def user_email(self, obj):
+        return obj.user.email
