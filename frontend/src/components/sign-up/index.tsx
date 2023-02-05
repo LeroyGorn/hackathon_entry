@@ -4,7 +4,7 @@ import * as Styled from "../../styles/auth-form.styled";
 import AuthModal from "../../common/auth/modal";
 import AuthInput from "../../common/auth/input";
 import { signUpData, signUpInitialValues } from "../../constants";
-import { ISignUpData } from "../../types/auth.type";
+import { ISignUpData } from "../../types/auth.types";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
