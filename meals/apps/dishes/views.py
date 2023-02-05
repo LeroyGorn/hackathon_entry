@@ -45,7 +45,7 @@ class AvailableDishesListAPIView(ListAPIView):
     def get_queryset(self):
         results = []
         user_products = {p.product: p.quantity for p in self.request.user.products.all()}
-        for dish in Dish.objects.filter(name='Peanut Butter Cookies'):
+        for dish in Dish.objects.all():
             all_products = True
             for dish_product in dish.products.all():
                 product = dish_product.product
