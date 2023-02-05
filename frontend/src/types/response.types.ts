@@ -6,6 +6,12 @@ export interface ILoginResponse {
   last_name: string;
 }
 
+export interface ISignUpResponse {
+  email: string;
+  first_name: string;
+  last_name: string;
+}
+
 export interface IRefreshResponse {
   refresh: string;
 }

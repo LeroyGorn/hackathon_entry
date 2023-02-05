@@ -3,15 +3,18 @@ import {
   AuthInputElement,
   AuthInputLabel,
   AuthInputWrapper,
+  ErrorMessage,
+  ErrorMessageWrapper,
 } from "../../../styles/auth-form.styled";
 
 interface IAuthInputProps {
   name: string;
   label: string;
   type: string;
+  error?: string;
 }
 
-const AuthInput = ({ name, label, type }: IAuthInputProps) => {
+const AuthInput = ({ error, name, label, type }: IAuthInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleLabelClick = () => {
@@ -27,6 +30,11 @@ const AuthInput = ({ name, label, type }: IAuthInputProps) => {
         placeholder={label}
       />
       <AuthInputLabel onClick={handleLabelClick}>{label}</AuthInputLabel>
+      {error && (
+        <ErrorMessageWrapper>
+          <ErrorMessage>{error}</ErrorMessage>
+        </ErrorMessageWrapper>
+      )}
     </AuthInputWrapper>
   );
 };
