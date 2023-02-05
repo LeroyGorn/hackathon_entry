@@ -40,8 +40,9 @@ class AvailableDishesListAPIView(ListAPIView):
     permission_classes = (
         IsAuthenticated,
     )
+    serializer_class = DishSerializer
 
-    def get(self, request, *args, **kwargs):
+    def get_queryset(self):
         results = []
         user_products = {p.product: p.quantity for p in self.request.user.products.all()}
         for dish in Dish.objects.filter(name='Peanut Butter Cookies'):
@@ -54,6 +55,4 @@ class AvailableDishesListAPIView(ListAPIView):
                     break
             if all_products:
                 results.append(dish)
-        return Response({
-            'dishes': DishSerializer(results, many=True).data
-        })
+        return results
