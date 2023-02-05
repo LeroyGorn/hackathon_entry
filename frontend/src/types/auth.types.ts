@@ -10,3 +10,13 @@ export interface ILoginData {
   email: string;
   password: string;
 }
+
+export interface IRefreshData {
+  refresh: string;
+}
+
+export interface IUserState {
+  email: string;
+  first_name: string;
+  last_name: string;
+}

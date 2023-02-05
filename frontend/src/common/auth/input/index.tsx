@@ -1,5 +1,4 @@
-import React from "react";
-import { useFormikContext } from "formik";
+import React, { useRef } from "react";
 import {
   AuthInputElement,
   AuthInputLabel,
@@ -13,10 +12,21 @@ interface IAuthInputProps {
 }
 
 const AuthInput = ({ name, label, type }: IAuthInputProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleLabelClick = () => {
+    inputRef.current && inputRef.current.focus();
+  };
+
   return (
     <AuthInputWrapper>
-      <AuthInputElement type={type} name={name} placeholder={label} />
-      <AuthInputLabel>{label}</AuthInputLabel>
+      <AuthInputElement
+        innerRef={inputRef}
+        type={type}
+        name={name}
+        placeholder={label}
+      />
+      <AuthInputLabel onClick={handleLabelClick}>{label}</AuthInputLabel>
     </AuthInputWrapper>
   );
 };

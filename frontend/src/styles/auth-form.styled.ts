@@ -4,7 +4,6 @@ import { themes } from "./themes";
 
 export const AuthWrapper = styled.div`
   min-height: 100vh;
-  max-height: 100vh;
   width: 100%;
   background-color: ${themes.color.secondary};
   display: flex;
@@ -42,6 +41,7 @@ export const AuthInputElement = styled(Field)`
   &::placeholder {
     color: transparent;
   }
+
   &:placeholder-shown ~ label {
     font-size: 1.3rem;
     cursor: text;
