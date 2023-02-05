@@ -4,7 +4,6 @@ import { themes } from "./themes";
 export const SearchInputWrapper = styled.div`
   width: 100%;
   position: relative;
-  margin-bottom: 35px;
 `;
 
 export const SearchInputElement = styled.input`

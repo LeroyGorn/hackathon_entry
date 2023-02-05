@@ -8,6 +8,7 @@ export const HomeContainer = styled.div`
 
   input {
     width: 100%;
+    margin-bottom: 35px;
   }
 `
 
