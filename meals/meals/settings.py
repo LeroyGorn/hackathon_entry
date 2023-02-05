@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-&q@sc!gmhx*ki)nhfj668xm8fx@_&h&go9p#9ib3jt5p-4-yw4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    # 'localhost',
+    # 'amazonhost',
+    '44.203.241.87',
+    'ec2-44-203-241-87.compute-1.amazonaws.com',
+]
 
 
 # Application definition
@@ -158,3 +163,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://ec2-44-203-241-87.compute-1.amazonaws.com',
+]
