@@ -27,10 +27,10 @@ SECRET_KEY = 'django-insecure-&q@sc!gmhx*ki)nhfj668xm8fx@_&h&go9p#9ib3jt5p-4-yw4
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    # 'localhost',
-    # 'amazonhost',
     '44.203.241.87',
     'ec2-44-203-241-87.compute-1.amazonaws.com',
+    'localhost',
+    'amazonhost',
 ]
 
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'apps.auth_user',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
