@@ -3,12 +3,14 @@ import { SearchInputWrapper, SearchInputElement } from '../../styles/search-inpu
 
 interface IProps {
   label: string;
+  search: string;
+  setSearch: (value: string) => void
 }
 
-const SearchInput = ({ label }: IProps) => {
+const SearchInput = ({ label, setSearch }: IProps) => {
   return (
      <SearchInputWrapper>
-      <SearchInputElement type='text' placeholder={label} />
+      <SearchInputElement type='text' placeholder={label} onChange={(e) => setSearch(e.target.value)} />
     </SearchInputWrapper>
   )
 }

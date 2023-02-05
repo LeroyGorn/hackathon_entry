@@ -2,7 +2,41 @@ import styled from "styled-components";
 import { themes } from "./themes";
 
 export const SidebarContainer = styled.div`
-  min-width: 350px;
+  max-width: 370px;
+  min-width: 370px;
   padding: 20px;
   border: 1px solid ${themes.color.gray};
+  margin-bottom: 40px;
+
+  input {
+    margin-bottom: 10px;
+  }
+`
+
+export const ProductsWrapper = styled.div`
+  max-height: calc(70vh - 80px);
+  overflow-y: scroll;
+`
+
+export const ProductElement = styled.div`
+  display: inline-block;
+  background-color: ${themes.color.lightGray};
+  border: 1px solid ${themes.color.gray};
+  border-radius: 5px;
+  width: fit-content;
+  margin: 10px 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: ${themes.color.lightOrange};
+  }
+`
+
+export const SelectedProductsWrapper = styled.div`
+  margin-bottom: 20px;
+  div {
+     background-color: ${themes.color.lightGray};
+  }
 `

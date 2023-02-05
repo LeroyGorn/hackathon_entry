@@ -13,8 +13,6 @@ import Sidebar from "../sidebar";
 import { get } from "../../redux/slices/product-slice";
 import { get as dishGet } from "../../redux/slices/dishes-slice";
 import { productsService } from "../../services/productService";
-import { authService } from "../../services/authService";
-import { showDishes } from "../../redux/slices/dishes-slice";
 import RecipeCard from "../../common/recipe/recipe-card";
 import { FormButton } from "../../styles/auth-form.styled";
 import { Spinner } from "../../styles/recipe-card.styled";
@@ -22,6 +20,7 @@ import { Spinner } from "../../styles/recipe-card.styled";
 const Home = () => {
   const dispatch = useDispatch();
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [search, setSearch] = useState<string>("");
   const [dishes, setDishes] = useState<IDish[]>([]);
   const [dishPage, setDishPage] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -47,9 +46,13 @@ const Home = () => {
   return (
     (dishes && (
       <HomeContainer>
-        <SearchInput label="Search fore recipes" />
+        <SearchInput
+          search={search}
+          setSearch={setSearch}
+          label="Search fore recipes"
+        />
         <MainContent>
-          <Sidebar />
+          <Sidebar products={products} />
           <RecipesWrapper>
             <RecipesGrid>
               {dishes.map((item) => (
