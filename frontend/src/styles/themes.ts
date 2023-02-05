@@ -4,7 +4,10 @@ export const themes = {
       inter: "'Inter', sans-serif",
       playfair: "'Playfair Display', serif",
     },
-    weight: {},
+    weight: {
+      medium: 500,
+      bold: 700,
+    },
     size: {
       medium: "1rem",
     },
@@ -19,6 +22,8 @@ export const themes = {
     darkGray: "#7f7f7f",
     gray: "#e8e8e8",
     lightGray: "#f9f9f9",
+    errorRed: "#ff0000",
+    loginErrorBg: "rgba(255, 0, 0, 0.3)",
   },
   media: {
     minPCFullHD: "(min-width: 1800px)",

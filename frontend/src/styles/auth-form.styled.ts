@@ -89,15 +89,16 @@ export const AuthSubmitButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
+`;
 
-  & button {
-    border-radius: 5px;
-    font-size: 22px;
-    color: ${themes.color.secondary};
-    border: 0;
-    background-color: ${themes.color.orange};
-    padding: 15px 40px;
-  }
+export const FormButton = styled.button`
+  border-radius: 5px;
+  font-size: 22px;
+  color: ${themes.color.secondary};
+  border: 0;
+  background-color: ${themes.color.orange};
+  padding: 15px 40px;
+  cursor: pointer;
 `;
 
 export const BottomTextWrapper = styled.div`
@@ -105,6 +106,7 @@ export const BottomTextWrapper = styled.div`
   display: flex;
   justify-content: center;
   font-size: 16px;
+  flex-direction: column;
 
   & span {
     text-align: center;
@@ -112,4 +114,29 @@ export const BottomTextWrapper = styled.div`
   & a {
     color: ${themes.color.orange};
   }
+`;
+
+export const ErrorAlert = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 20px;
+  width: 100%;
+  border: 4px solid ${themes.color.errorRed};
+  border-radius: 1rem;
+  background-color: ${themes.color.loginErrorBg};
+  font-size: 18px;
+  font-weight: ${themes.font.weight.bold};
+  margin-bottom: 10px;
+`;
+
+export const ErrorMessageWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+`;
+
+export const ErrorMessage = styled.span`
+  color: ${themes.color.errorRed};
 `;
