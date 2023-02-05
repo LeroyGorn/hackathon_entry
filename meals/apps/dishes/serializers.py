@@ -7,7 +7,7 @@ from apps.products.serializers import ProductSerializer
 class DishSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dish
-        fields = ['name', 'image', 'instructions', 'category']
+        fields = ['id', 'name', 'image', 'instructions', 'category']
 
 
 class DishProductSerializer(serializers.ModelSerializer):

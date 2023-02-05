@@ -56,3 +56,14 @@ class AvailableDishesListAPIView(ListAPIView):
             if all_products:
                 results.append(dish)
         return results
+
+
+class CategoryDishListAPIView(ListAPIView):
+    permission_classes = (
+        AllowAny,
+    )
+
+    def get(self, *args, **kwargs):
+        return Response({
+            "category": [i for i in Dish.CategoryChoice],
+        })
