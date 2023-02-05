@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     '44.203.241.87',
     'ec2-44-203-241-87.compute-1.amazonaws.com',
     'localhost',
+    '127.0.0.1',
     'amazonhost',
 ]
 

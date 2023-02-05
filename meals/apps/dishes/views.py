@@ -40,28 +40,20 @@ class AvailableDishesListAPIView(ListAPIView):
     permission_classes = (
         IsAuthenticated,
     )
-    pagination_class = LimitOffsetPagination
-    serializer_class = DishSerializer
 
-    # def get_queryset(self):
-    #     result = []
-    #     user_products = self.request.user.products.values_list()
-    #     dishes = Dish.objects.filter(
-    #         products__in=user_products
-    #     ).annotate(
-    #         count_products=Count('products')
-    #     )
-    #     for dish in dishes:
-    #         if dish.count_products == user_products.filter(dish=dish).count():
-    #             for user_product in user_products:
-    #                 if dish.products.get(product=user_product.product).quantity <= user_product.quantity:
-    #                     result.append(dish)
-    #     return result
-    # def get_queryset(self):
-    #     user_products = self.request.user.products.values_list('product_id', 'quantity')
-    #     return Dish.objects.filter(
-    #         products__product__in=[p[0] for p in user_products]
-    #     ).filter(
-    #         products__product__in=[p[0] for p in user_products],
-    #         products__quantity__lte=[p[1] for p in user_products]
-    #     ).distinct()
+    def get(self, request, *args, **kwargs):
+        results = []
+        user_products = {p.product: p.quantity for p in self.request.user.products.all()}
+        for dish in Dish.objects.filter(name='Peanut Butter Cookies'):
+            all_products = True
+            for dish_product in dish.products.all():
+                product = dish_product.product
+                quantity = dish_product.quantity
+                if product not in user_products or quantity > user_products[product]:
+                    all_products = False
+                    break
+            if all_products:
+                results.append(dish)
+        return Response({
+            'dishes': DishSerializer(results, many=True).data
+        })
