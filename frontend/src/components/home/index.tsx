@@ -49,27 +49,29 @@ const Home = () => {
         <SearchInput
           search={search}
           setSearch={setSearch}
-          label="Search fore recipes"
+          label="Search for recipes"
         />
         <MainContent>
           <Sidebar products={products} />
           <RecipesWrapper>
             <RecipesGrid>
-              {dishes.map((item) => (
+              {dishes.filter((item) => item.name.includes(search)).map((item) => {
+                console.log(item)
+                return (
                 <RecipeCard
-                  key={item.name}
+                  key={item.id}
                   name={item.name}
                   image={item.image}
                   instructions={item.instructions}
                   category={item.category}
                 />
-              ))}
+              )})}
             </RecipesGrid>
             <RecipeButtonWrapper>
               {isLoading ? (
                 <Spinner />
               ) : (
-                <FormButton onClick={handleLoadMoreClick}>Load More</FormButton>
+                search === '' && <FormButton onClick={handleLoadMoreClick}>Load More</FormButton>
               )}
             </RecipeButtonWrapper>
           </RecipesWrapper>

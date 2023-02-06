@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import Logo from "../../common/logo";
 import { showUser } from "../../redux/slices/user-slice";
 import { HeaderContainer, Nav, NavItem } from "../../styles/header.styled";
-import { mockedData } from "./mockedData";
+import { BiUser } from "react-icons/bi"
+
 
 const Header = () => {
   const userData = useSelector(showUser);
   const [name, setName] = useState<string>();
+  const [isLogined] = useState(!!localStorage.getItem("USERNAME"));
 
   useEffect(() => {
     if (typeof localStorage.getItem("USERNAME") === "string") {
@@ -23,15 +25,24 @@ const Header = () => {
     <HeaderContainer>
       <Logo />
       <Nav>
-        {mockedData.map((item) => {
-          return <NavItem key={item.id}>{item.title}</NavItem>;
-        })}
+        {isLogined ? (
+          <>
+            <BiUser />
+            {name &&
+              <>
+                <p>Hello, <span className="username">{name}</span>!</p>
+                <NavItem>
+                  <Link className="logout" to="/logout">Logout</Link>
+                </NavItem>
+              </>
+            }
+          </>
+        ) : (
+          <NavItem>
+            <Link className="signup" to="/signup">Sign Up</Link> | <Link className="login" to="/login">Login</Link>{" "}
+          </NavItem>
+        )}
       </Nav>
-      {(name && <p>Hello {name}!</p>) || (
-        <p>
-          <Link to="/signup">Sign Up</Link> or <Link to="/login">Login</Link>{" "}
-        </p>
-      )}
     </HeaderContainer>
   );
 };

@@ -6,21 +6,22 @@ export const RecipeCardWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-`;
+  `;
 
 export const RecipeImage = styled.img`
   width: 100%;
-`;
+  `;
 
 export const RecipeTitle = styled.h4`
   font-size: 1.2em;
   margin-top: 3px;
+  color: ${themes.color.primary};
 `;
 
 export const RecipeCategory = styled.span`
   margin-top: 3px;
   font-size: 0.9em;
-  color: ${themes.color.primary};
+  color: ${themes.color.orange};
   opacity: 0.5;
   font-weight: ${themes.font.weight.bold};
 `;
