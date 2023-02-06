@@ -23,3 +23,7 @@ export interface IDishResponse {
   next: string;
   results: IDish[];
 }
+
+export interface ICategoryResponse {
+  category: string[];
+}
