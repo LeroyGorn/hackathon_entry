@@ -1,19 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { IDish } from "../../types/products.type";
 import * as Styled from "../../styles/recipe-card.styled";
 
-interface IRecipeCard {
-  name: string;
-  image: string;
-  instructions: string;
-  category: string;
-}
-
-const RecipeCard = ({ name, image, instructions, category }: IRecipeCard) => {
+const RecipeCard = ({ name, image, instructions, category }: IDish) => {
   return (
     <Styled.RecipeCardWrapper>
-      <Styled.RecipeImage src={image} alt={`${name} img`} />
-      <Styled.RecipeCategory>{category}</Styled.RecipeCategory>
-      <Styled.RecipeTitle>{name}</Styled.RecipeTitle>
+      <Link to={'/'}>
+        <Styled.RecipeImage src={image} alt={`${name} img`} />
+        <Styled.RecipeCategory>{category}</Styled.RecipeCategory>
+        <Styled.RecipeTitle>{name}</Styled.RecipeTitle>
+      </Link>
     </Styled.RecipeCardWrapper>
   );
 };
