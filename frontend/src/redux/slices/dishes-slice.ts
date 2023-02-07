@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { IDish } from "../../types/products.type";
+import { IOneDishResponse } from "../../types/response.types";
 
 const initialState: IDish[] = [];
 

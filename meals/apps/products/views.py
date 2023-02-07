@@ -28,7 +28,7 @@ class UserProductsListCreateAPIView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return UserProduct.objects.filter(
-            user_id=self.kwargs.get('user_id'),
+            user=self.request.user
         )
 
 

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { IDish } from "../../types/products.type";
 import * as Styled from "../../styles/recipe-card.styled";
 
-const RecipeCard = ({ name, image, instructions, category }: IDish) => {
+const RecipeCard = ({ id, name, image, instructions, category }: IDish) => {
   return (
     <Styled.RecipeCardWrapper>
-      <Link to={'/'}>
+      <Link to={`/dishes/${id}`}>
         <Styled.RecipeImage src={image} alt={`${name} img`} />
         <Styled.RecipeCategory>{category}</Styled.RecipeCategory>
         <Styled.RecipeTitle>{name}</Styled.RecipeTitle>

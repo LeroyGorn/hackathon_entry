@@ -4,6 +4,6 @@ from apps.products.views import ProductListAPIView, UserProductsListCreateAPIVie
 
 urlpatterns = [
     path('', ProductListAPIView.as_view()),
-    path('user/<int:user_id>/', UserProductsListCreateAPIView.as_view()),
-    path('user/update/<int:product_id>/', UserProductsUpdateAPIView.as_view()),
+    path('user_products/', UserProductsListCreateAPIView.as_view()),
+    path('user_products/<int:user_product_id>/', UserProductsUpdateAPIView.as_view()),
 ]

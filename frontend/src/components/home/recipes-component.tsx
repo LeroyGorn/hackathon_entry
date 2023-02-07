@@ -68,6 +68,7 @@ const RecipeComponent = ({
         <RecipesGrid>
           {currentDishes.map((item) => (
             <RecipeCard
+              id={item.id}
               key={item.name}
               name={item.name}
               image={item.image}
