@@ -19,17 +19,40 @@ const Home = () => {
   }, []);
 
   return (
-    <HomeContainer>
-      <SearchInput
-        search={search}
-        setSearch={setSearch}
-        label="Search fore recipes"
-      />
-      <MainContent>
-        <Sidebar products={products} />
-        <RecipeComponent />
-      </MainContent>
-    </HomeContainer>
+    (dishes && (
+      <HomeContainer>
+        <SearchInput
+          search={search}
+          setSearch={setSearch}
+          label="Search for recipes"
+        />
+        <MainContent>
+          <Sidebar products={products} />
+          <RecipesWrapper>
+            <RecipesGrid>
+              {dishes.filter((item) => item.name.includes(search)).map((item) =>
+                <RecipeCard
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  image={item.image}
+                  instructions={item.instructions}
+                  category={item.category}
+                />
+              )}
+            </RecipesGrid>
+            <RecipeButtonWrapper>
+              {isLoading ? (
+                <Spinner />
+              ) : (
+                search === '' && <FormButton onClick={handleLoadMoreClick}>Load More</FormButton>
+              )}
+            </RecipeButtonWrapper>
+          </RecipesWrapper>
+        </MainContent>
+      </HomeContainer>
+    )) ||
+    null
   );
 };
 
