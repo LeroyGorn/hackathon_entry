@@ -1,6 +1,6 @@
 import { HttpService } from "../http.service";
 import { HttpServiceFactory } from "../";
-import { IDish, IProduct } from "../../types/products.type";
+import { IDish, IProduct, IUserProducts } from "../../types/products.type";
 import { ICategoryResponse, IDishResponse } from "../../types/response.types";
 
 export class ProductsService {
@@ -13,6 +13,16 @@ export class ProductsService {
     return this.httpService.get(`/api/dishes/?limit=${limit}`);
   }
 
+  public getFilteredDishes(
+    name?: string,
+    ingredients?: string,
+    limit?: number
+  ): Promise<IDishResponse | void> {
+    return this.httpService.get(
+      `/api/dishes/?name=${name}&product=${ingredients}&limit=${limit}`
+    );
+  }
+
   public getAllCategories(): Promise<ICategoryResponse | void> {
     return this.httpService.get(`/api/dishes/category/`);
   }
@@ -21,8 +31,14 @@ export class ProductsService {
     return this.httpService.get(`/api/dishes/${query}`);
   }
 
-  public getUserProducts(id: number, config: string): Promise<IDish[] | void> {
-    return this.httpService.get(`/api/products/user/${id}/`, {
+  public getUserProducts(config: string): Promise<IUserProducts[] | void> {
+    return this.httpService.get(`api/products/user_products/`, {
+      headers: { Authorization: config },
+    });
+  }
+
+  public getUserDishes(config: string): Promise<IDish[] | void> {
+    return this.httpService.get(`api/dishes/available/`, {
       headers: { Authorization: config },
     });
   }

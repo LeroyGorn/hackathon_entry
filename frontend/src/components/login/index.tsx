@@ -65,11 +65,11 @@ const Login = () => {
                 error={errors[input.name as keyof ILoginData]}
               />
             ))}
-            <Styled.AuthSubmitButtonWrapper>
+            <Styled.CenterButtonWrapper>
               <Styled.FormButton type="submit">
                 {loginFormData.buttonText}
               </Styled.FormButton>
-            </Styled.AuthSubmitButtonWrapper>
+            </Styled.CenterButtonWrapper>
             <Styled.BottomTextWrapper>
               {error && <Styled.ErrorAlert>{error}</Styled.ErrorAlert>}
               <span>
