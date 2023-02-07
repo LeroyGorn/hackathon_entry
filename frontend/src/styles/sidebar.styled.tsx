@@ -28,7 +28,7 @@ export const ProductElement = styled.button`
   padding: 5px 12px;
   cursor: pointer;
   transition: all 0.3s;
-  font-size: 1.3rem;
+  font-size: 20px;
 
   &.user {
     background-color: ${themes.color.lightOrange};

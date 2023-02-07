@@ -22,6 +22,10 @@ export const PageTitle = styled.h3`
   font-family: ${themes.font.family.playfair};
   font-size: 40px;
   margin-bottom: 40px;
+
+  @media ${themes.media.maxMobile} {
+   font-size: 30px;
+  }
 `;
 
 export const RecipeCategory = styled.span`
@@ -35,7 +39,7 @@ export const RecipeCategory = styled.span`
 export const CategoryButton = styled.button`
   width: fit-content;
   border: 1px solid ${themes.color.orange};
-  background-color: ${themes.color.secondaryGray};
+  background-color: ${themes.color.lightGray};
   padding: 12px 47px;
   border-radius: 5px;
   font-size: 20px;
@@ -47,6 +51,10 @@ export const CategoryButton = styled.button`
 
   &.active {
     background-color: ${themes.color.lightOrange};
+  }
+
+  @media ${themes.media.maxMobile} {
+    font-size: 17px;
   }
 `;
 
