@@ -21,9 +21,9 @@ export const RecipeElementContainer = styled.div`
   @media ${themes.media.maxMobile} {
     img {
       max-width: 100%;
-    } 
+    }
   }
-`
+`;
 
 export const RecipeTitle = styled.h2`
   text-align: center;
@@ -33,17 +33,17 @@ export const RecipeTitle = styled.h2`
   border-bottom: 2px solid ${themes.color.gray};
   margin-bottom: 30px;
   padding: 10px;
-`
+`;
 
 export const RecipeSubtitle = styled.h3`
   text-align: center;
   margin-bottom: 15px;
-`
+`;
 
 export const RecipeText = styled.p`
   margin-bottom: 40px;
   line-height: 1.8rem;
-`
+`;
 
 export const RecipeWrapper = styled.div`
   display: flex;
@@ -51,11 +51,11 @@ export const RecipeWrapper = styled.div`
   justify-content: space-between;
   gap: 20px;
   margin-bottom: 40px;
-  
+
   @media ${themes.media.maxMobile} {
     flex-direction: column;
   }
-`
+`;
 
 export const ProductsCard = styled.div`
   display: flex;
@@ -75,7 +75,7 @@ export const ProductsCard = styled.div`
   @media ${themes.media.maxLowScreenMobile} {
     min-width: 300px;
   }
-`
+`;
 
 export const ProductsList = styled.ul`
   width: 100%;
@@ -91,12 +91,25 @@ export const ProductsList = styled.ul`
   @media ${themes.media.maxMobile} {
     max-height: 150px;
   }
-`
+`;
 export const ProductItem = styled.li`
   margin-bottom: 10px;
-`
+`;
 
 export const ProductQuantity = styled.span`
   font-weight: ${themes.font.weight.bold};
   color: ${themes.color.orange};
-`
+`;
+
+export const AlertText = styled.div`
+  width: 100%;
+  text-align: center;
+  font-weight: ${themes.font.weight.bold};
+
+  & a {
+    color: ${themes.color.orange};
+    text-decoration: underline;
+  }
+`;
+
+export const RecipeCompareWrapper = styled.div``;
