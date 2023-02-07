@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { productsService } from "../../services/productService";
 import { IOneDishResponse } from "../../types/response.types";
 import * as Styled from "../../styles/recipe-element.styled";
 import { Spinner } from "../../styles/recipe-card.styled";
+import RecipeCompare from "./recipe-compare";
+import { IUserProducts } from "../../types/products.type";
 
 const RecipeElement = () => {
   const { id } = useParams();
   const [dish, setDish] = useState<IOneDishResponse>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [userProducts, setUserProducts] = useState<IUserProducts[]>([]);
 
   useEffect(() => {
     if (id) {
       productsService.getDishById(id).then((res) => res && setDish(res));
     }
   }, [id]);
+
+  useEffect(() => {
+    const Authorization = localStorage.getItem("ACCESS_TOKEN");
+    if (Authorization) {
+      const auth = `Bearer ${Authorization}`;
+      productsService
+        .getUserProducts(auth)
+        .then((res) => res && setUserProducts(res));
+    }
+  }, []);
 
   useEffect(() => {
     if (!!dish) setIsLoading(false);
@@ -46,6 +59,16 @@ const RecipeElement = () => {
           </Styled.RecipeWrapper>
           <Styled.RecipeSubtitle>Instructions</Styled.RecipeSubtitle>
           <Styled.RecipeText>{dish?.dish.instructions}</Styled.RecipeText>
+          {(localStorage.getItem("ACCESS_TOKEN") &&
+            dish &&
+            userProducts.length > 0 && (
+              <RecipeCompare choosenDish={dish} userProducts={userProducts} />
+            )) || (
+            <Styled.AlertText>
+              Want to cook this dish? Please <Link to="/login">Login</Link> |{" "}
+              <Link to="/signup">Sign Up</Link>
+            </Styled.AlertText>
+          )}
         </>
       )}
     </Styled.RecipeElementContainer>
