@@ -1,4 +1,4 @@
-import { IDish } from "./products.type";
+import { IDish, IProduct } from "./products.type";
 
 export interface ILoginResponse {
   access: string;
@@ -22,4 +22,14 @@ export interface IDishResponse {
   count: number;
   next: string;
   results: IDish[];
+}
+
+export interface IOneDishResponse {
+  dish: IDish;
+  products: [
+    {
+      product: IProduct;
+      quantity: number
+    }
+  ];
 }

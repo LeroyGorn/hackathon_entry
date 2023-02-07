@@ -9,6 +9,7 @@ export const themes = {
       bold: 700,
     },
     size: {
+      large: "2rem",
       medium: "1rem",
     },
   },
@@ -36,7 +37,7 @@ export const themes = {
     maxPC: "(max-width: 1500px)",
     maxTabletLandscape: "(max-width: 1200px)",
     maxTabletPortrait: "(max-width: 992px)",
-    maxMobile: "(max-width: 768px)",
+    maxMobile: "(max-width: 678px)",
     maxLowScreenMobile: "(max-width: 475px)",
   },
 };

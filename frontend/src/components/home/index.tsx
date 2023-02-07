@@ -55,17 +55,16 @@ const Home = () => {
           <Sidebar products={products} />
           <RecipesWrapper>
             <RecipesGrid>
-              {dishes.filter((item) => item.name.includes(search)).map((item) => {
-                console.log(item)
-                return (
+              {dishes.filter((item) => item.name.includes(search)).map((item) =>
                 <RecipeCard
                   key={item.id}
+                  id={item.id}
                   name={item.name}
                   image={item.image}
                   instructions={item.instructions}
                   category={item.category}
                 />
-              )})}
+              )}
             </RecipesGrid>
             <RecipeButtonWrapper>
               {isLoading ? (
