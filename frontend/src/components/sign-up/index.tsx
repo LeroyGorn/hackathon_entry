@@ -49,11 +49,11 @@ const SignUp = () => {
                 error={errors[input.name as keyof ISignUpData]}
               />
             ))}
-            <Styled.AuthSubmitButtonWrapper>
+            <Styled.CenterButtonWrapper>
               <Styled.FormButton type="submit">
                 {signUpData.buttonText}
               </Styled.FormButton>
-            </Styled.AuthSubmitButtonWrapper>
+            </Styled.CenterButtonWrapper>
             <Styled.BottomTextWrapper>
               {error && <Styled.ErrorAlert>{error}</Styled.ErrorAlert>}
               <span>

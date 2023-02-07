@@ -13,26 +13,38 @@ import { IDish } from "../../types/products.type";
 import { get as dishGet } from "../../redux/slices/dishes-slice";
 import { productsService } from "../../services/productService";
 import RecipesCategory from "../../common/recipe/recipe-category";
+import { IDishResponse } from "../../types/response.types";
 
-const RecipeComponent = () => {
+interface IRecipeComponentProps {
+  dishLimit: number;
+  setDishLimit: React.Dispatch<React.SetStateAction<number>>;
+  filteredRecipes?: IDishResponse;
+}
+
+const RecipeComponent = ({
+  filteredRecipes,
+  dishLimit,
+  setDishLimit,
+}: IRecipeComponentProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [dishPage, setDishPage] = useState<number>(1);
   const [dishes, setDishes] = useState<IDish[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const dispatch = useDispatch();
 
   const handleLoadMoreClick = () => {
-    setDishPage((old) => old + 1);
+    setDishLimit((old) => old + 1);
   };
 
   useEffect(() => {
-    setIsLoading(true);
-    productsService.getAllDishes(dishPage * 9).then((res) => {
-      res && setDishes(res.results);
-      setIsLoading(false);
-    });
-    dispatch(dishGet(dishes));
-  }, [dishPage]);
+    if (!filteredRecipes) {
+      setIsLoading(true);
+      productsService.getAllDishes(dishLimit * 9).then((res) => {
+        res && setDishes(res.results);
+        setIsLoading(false);
+      });
+      dispatch(dishGet(dishes));
+    }
+  }, [dishLimit, filteredRecipes]);
 
   useEffect(() => {
     if (categories.length > 0) {
@@ -43,14 +55,20 @@ const RecipeComponent = () => {
     }
   }, [categories]);
 
+  const currentDishes =
+    filteredRecipes && filteredRecipes.results.length > 0
+      ? filteredRecipes.results
+      : dishes;
+
   return (
     <RecipesWrapper>
       <RecipesCategory categories={categories} setCategories={setCategories} />
       <ContentWrapper>
         <PageTitle>Recipes</PageTitle>
         <RecipesGrid>
-          {dishes.map((item) => (
+          {currentDishes.map((item) => (
             <RecipeCard
+              id={item.id}
               key={item.name}
               name={item.name}
               image={item.image}
@@ -63,7 +81,17 @@ const RecipeComponent = () => {
           {isLoading ? (
             <Spinner />
           ) : (
-            <FormButton onClick={handleLoadMoreClick}>Load More</FormButton>
+            <FormButton
+              disabled={filteredRecipes && !filteredRecipes.next}
+              className={
+                filteredRecipes && !filteredRecipes.next
+                  ? "disabled"
+                  : undefined
+              }
+              onClick={handleLoadMoreClick}
+            >
+              Load More
+            </FormButton>
           )}
         </RecipeButtonWrapper>
       </ContentWrapper>

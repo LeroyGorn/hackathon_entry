@@ -1,8 +1,11 @@
 import { HttpService } from "../http.service";
 import { HttpServiceFactory } from "../";
-import { IDish, IProduct } from "../../types/products.type";
-
-import { ICategoryResponse, IDishResponse, IOneDishResponse } from "../../types/response.types";
+import { IDish, IProduct, IUserProducts } from "../../types/products.type";
+import {
+  ICategoryResponse,
+  IDishResponse,
+  IOneDishResponse,
+} from "../../types/response.types";
 
 export class ProductsService {
   constructor(private httpService: HttpService) {}
@@ -14,8 +17,17 @@ export class ProductsService {
     return this.httpService.get(`/api/dishes/?limit=${limit}`);
   }
 
+  public getFilteredDishes(
+    name?: string,
+    ingredients?: string,
+    limit?: number
+  ): Promise<IDishResponse | void> {
+    return this.httpService.get(
+      `/api/dishes/?name=${name}&product=${ingredients}&limit=${limit}`
+    );
+  }
 
-  public getDishById(id: string | undefined): Promise<IOneDishResponse | void> {
+  public getDishById(id: string): Promise<IOneDishResponse | void> {
     return this.httpService.get(`/api/dishes/${id}/`);
   }
 
@@ -27,8 +39,14 @@ export class ProductsService {
     return this.httpService.get(`/api/dishes/${query}`);
   }
 
-  public getUserProducts(id: number, config: string): Promise<IDish[] | void> {
-    return this.httpService.get(`/api/products/user/${id}/`, {
+  public getUserProducts(config: string): Promise<IUserProducts[] | void> {
+    return this.httpService.get(`api/products/user_products/`, {
+      headers: { Authorization: config },
+    });
+  }
+
+  public getUserDishes(config: string): Promise<IDish[] | void> {
+    return this.httpService.get(`api/dishes/available/`, {
       headers: { Authorization: config },
     });
   }

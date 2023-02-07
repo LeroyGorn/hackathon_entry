@@ -15,3 +15,9 @@ export interface IDish {
 export interface ICategoryState {
   category: string[];
 }
+
+export interface IUserProducts {
+  id: number;
+  product: IProduct;
+  quantity: number;
+}
