@@ -33,3 +33,7 @@ export interface IOneDishResponse {
     }
   ];
 }
+
+export interface ICategoryResponse {
+  category: string[];
+}

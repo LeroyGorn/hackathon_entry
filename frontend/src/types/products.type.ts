@@ -11,3 +11,7 @@ export interface IDish {
   instructions: string;
   category: string;
 }
+
+export interface ICategoryState {
+  category: string[];
+}

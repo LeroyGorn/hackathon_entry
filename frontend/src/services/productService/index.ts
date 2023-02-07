@@ -1,7 +1,8 @@
 import { HttpService } from "../http.service";
 import { HttpServiceFactory } from "../";
 import { IDish, IProduct } from "../../types/products.type";
-import { IDishResponse, IOneDishResponse } from "../../types/response.types";
+
+import { ICategoryResponse, IDishResponse, IOneDishResponse } from "../../types/response.types";
 
 export class ProductsService {
   constructor(private httpService: HttpService) {}
@@ -13,8 +14,23 @@ export class ProductsService {
     return this.httpService.get(`/api/dishes/?limit=${limit}`);
   }
 
+
   public getDishById(id: string | undefined): Promise<IOneDishResponse | void> {
     return this.httpService.get(`/api/dishes/${id}/`);
+  }
+
+  public getAllCategories(): Promise<ICategoryResponse | void> {
+    return this.httpService.get(`/api/dishes/category/`);
+  }
+
+  public getDishesByCategories(query: string): Promise<IDish[] | void> {
+    return this.httpService.get(`/api/dishes/${query}`);
+  }
+
+  public getUserProducts(id: number, config: string): Promise<IDish[] | void> {
+    return this.httpService.get(`/api/products/user/${id}/`, {
+      headers: { Authorization: config },
+    });
   }
 }
 

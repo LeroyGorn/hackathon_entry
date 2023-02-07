@@ -18,7 +18,22 @@ export const MainContent = styled.div`
   gap: 20px;
 `;
 
+export const ContentWrapper = styled.div`
+  width: 100%;
+  border: 1px solid ${themes.color.gray};
+  padding: 20px;
+
+  &.upper {
+    margin-bottom: 20px;
+  }
+`;
+
 export const RecipesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const RecipesCategoriesWrapper = styled.div`
   width: 100%;
   border: 1px solid ${themes.color.gray};
   padding: 20px;
