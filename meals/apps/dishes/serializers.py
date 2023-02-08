@@ -16,4 +16,3 @@ class DishProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = DishProduct
         fields = ['product', 'quantity']
-

@@ -3,7 +3,7 @@
 Hey there, it is Los Pollos Hermanos Hackathon 2023 project.
 
 First of all you can get our web site by the link:
-http://ec2-44-203-241-87.compute-1.amazonaws.com/api/auth/login/
+https://pollos-entry.herokuapp.com/api/auth/login/
 Firstly you need to register your account to get access to full functionality of our project.
 Our website offers you to:
 

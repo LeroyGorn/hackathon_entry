@@ -29,6 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'pollos-entry.herokuapp.com',
     '44.203.241.87',
     'ec2-44-203-241-87.compute-1.amazonaws.com',
     'localhost',
