@@ -10,11 +10,11 @@ import {
 export class ProductsService {
   constructor(private httpService: HttpService) {}
   public getAllProducts(): Promise<IProduct[] | void> {
-    return this.httpService.get("/api/products/");
+    return this.httpService.get("api/products/");
   }
 
   public getAllDishes(limit: number): Promise<IDishResponse | void> {
-    return this.httpService.get(`/api/dishes/?limit=${limit}`);
+    return this.httpService.get(`api/dishes/?limit=${limit}`);
   }
 
   public getFilteredDishes(
@@ -23,20 +23,20 @@ export class ProductsService {
     limit?: number
   ): Promise<IDishResponse | void> {
     return this.httpService.get(
-      `/api/dishes/?name=${name}&product=${ingredients}&limit=${limit}`
+      `api/dishes/?name=${name}&product=${ingredients}&limit=${limit}`
     );
   }
 
   public getDishById(id: string): Promise<IOneDishResponse | void> {
-    return this.httpService.get(`/api/dishes/${id}/`);
+    return this.httpService.get(`api/dishes/${id}/`);
   }
 
   public getAllCategories(): Promise<ICategoryResponse | void> {
-    return this.httpService.get(`/api/dishes/category/`);
+    return this.httpService.get(`api/dishes/category/`);
   }
 
   public getDishesByCategories(query: string): Promise<IDish[] | void> {
-    return this.httpService.get(`/api/dishes/${query}`);
+    return this.httpService.get(`api/dishes/${query}`);
   }
 
   public getUserProducts(config: string): Promise<IUserProducts[] | void> {

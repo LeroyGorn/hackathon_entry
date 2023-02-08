@@ -19,15 +19,15 @@ const RecipeElement = () => {
     }
   }, [id]);
 
-  useEffect(() => {
-    const Authorization = localStorage.getItem("ACCESS_TOKEN");
-    if (Authorization) {
-      const auth = `Bearer ${Authorization}`;
-      productsService
-        .getUserProducts(auth)
-        .then((res) => res && setUserProducts(res));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const Authorization = localStorage.getItem("ACCESS_TOKEN");
+  //   if (Authorization) {
+  //     const auth = `Bearer ${Authorization}`;
+  //     productsService
+  //       .getUserProducts(auth)
+  //       .then((res) => res && setUserProducts(res));
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (!!dish) setIsLoading(false);
