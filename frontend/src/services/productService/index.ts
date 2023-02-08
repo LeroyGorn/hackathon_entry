@@ -1,28 +1,52 @@
 import { HttpService } from "../http.service";
 import { HttpServiceFactory } from "../";
-import { IDish, IProduct } from "../../types/products.type";
-import { ICategoryResponse, IDishResponse } from "../../types/response.types";
+import { IDish, IProduct, IUserProducts } from "../../types/products.type";
+import {
+  ICategoryResponse,
+  IDishResponse,
+  IOneDishResponse,
+} from "../../types/response.types";
 
 export class ProductsService {
   constructor(private httpService: HttpService) {}
   public getAllProducts(): Promise<IProduct[] | void> {
-    return this.httpService.get("/api/products/");
+    return this.httpService.get("api/products/");
   }
 
   public getAllDishes(limit: number): Promise<IDishResponse | void> {
-    return this.httpService.get(`/api/dishes/?limit=${limit}`);
+    return this.httpService.get(`api/dishes/?limit=${limit}`);
+  }
+
+  public getFilteredDishes(
+    name?: string,
+    ingredients?: string,
+    limit?: number
+  ): Promise<IDishResponse | void> {
+    return this.httpService.get(
+      `api/dishes/?name=${name}&product=${ingredients}&limit=${limit}`
+    );
+  }
+
+  public getDishById(id: string): Promise<IOneDishResponse | void> {
+    return this.httpService.get(`api/dishes/${id}/`);
   }
 
   public getAllCategories(): Promise<ICategoryResponse | void> {
-    return this.httpService.get(`/api/dishes/category/`);
+    return this.httpService.get(`api/dishes/category/`);
   }
 
   public getDishesByCategories(query: string): Promise<IDish[] | void> {
-    return this.httpService.get(`/api/dishes/${query}`);
+    return this.httpService.get(`api/dishes/${query}`);
   }
 
-  public getUserProducts(id: number, config: string): Promise<IDish[] | void> {
-    return this.httpService.get(`/api/products/user/${id}/`, {
+  public getUserProducts(config: string): Promise<IUserProducts[] | void> {
+    return this.httpService.get(`api/products/user_products/`, {
+      headers: { Authorization: config },
+    });
+  }
+
+  public getUserDishes(config: string): Promise<IDish[] | void> {
+    return this.httpService.get(`api/dishes/available/`, {
       headers: { Authorization: config },
     });
   }

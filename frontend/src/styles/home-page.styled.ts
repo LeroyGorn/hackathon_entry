@@ -16,6 +16,11 @@ export const MainContent = styled.div`
   align-items: start;
   justify-content: space-between;
   gap: 20px;
+
+  @media ${themes.media.maxMobile} {
+    flex-direction: column;
+  } 
+
 `;
 
 export const ContentWrapper = styled.div`

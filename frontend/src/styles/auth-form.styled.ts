@@ -85,10 +85,14 @@ export const AuthInputWrapper = styled.div`
   }
 `;
 
-export const AuthSubmitButtonWrapper = styled.div`
+export const CenterButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 30px;
+
+  &.search {
+    margin-block: 0 20px;
+  }
 `;
 
 export const FormButton = styled.button`
@@ -99,6 +103,11 @@ export const FormButton = styled.button`
   background-color: ${themes.color.orange};
   padding: 15px 40px;
   cursor: pointer;
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
 `;
 
 export const BottomTextWrapper = styled.div`

@@ -6,6 +6,15 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 1.2rem;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }

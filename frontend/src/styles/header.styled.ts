@@ -8,11 +8,11 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  .signup, 
+  .signup,
   .login {
     color: ${themes.color.orange};
   }
-`
+`;
 
 export const Nav = styled.ul`
   display: flex;
@@ -34,9 +34,12 @@ export const Nav = styled.ul`
   .username {
     color: ${themes.color.orange};
   }
-`
+`;
 
 export const NavItem = styled.li`
   margin-left: 20px;
-  
-`
+`;
+
+export const Logout = styled.div`
+  cursor: pointer;
+`;
